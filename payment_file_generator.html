@@ -35,12 +35,13 @@
                 <td><label for="amount">Payment amount</label></td>
             </tr>
             <tr id="paymentrow">
-                <td><input type="text" id="reference" name="reference" size="30"></td>
-                <td><input type="text" id="amount" name="amount"></td>
+                <td><input type="text" id="reference" name="reference0" size="30"></td>
+                <td><input type="text" id="amount" name="amount0"></td>
                 <td><input type="button" value="Delete row" onclick="deleteRow(this)"></td>
             </tr>
         </table> 
         <input type="button" name="rowadd" value="Add row" onclick="addRow()">
+        <input type="button" value="Remove last row" onclick="deleteRow()">
         <input type="reset" value="Clear fields">
         <input type="submit" name="submit" value="Generate file">
     </form>
@@ -48,20 +49,17 @@
     
     </p>
     <script>
-        function deleteRow(row) {
-            var i = row.parentNode.parentNode.rowIndex;
-            document.getElementById('paymentsdata').deleteRow(i);
+        function deleteRow() {
+            document.getElementById('paymentsdata').deleteRow(-1);
         }
         function addRow() {
             var table = document.getElementById('paymentsdata');
             var row = table.insertRow(-1);
             var cell1 = row.insertCell(0);
             var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var i = row.rowIndex;
-            cell1.innerHTML = '<input type="text" id="reference' +i+ '" name="reference" size="30">';
-            cell2.innerHTML = '<input type="text" id="amount' +i+ '" name="amount">';
-            cell3.innerHTML = '<input type="button" value="Delete row" onclick="deleteRow(this)">';
+            var i = row.rowIndex - 3;
+            cell1.innerHTML = '<input type="text" name="reference' +i+ '" size="30">';
+            cell2.innerHTML = '<input type="text" name="amount' +i+ '">';
         }
         </script>
 </body>
