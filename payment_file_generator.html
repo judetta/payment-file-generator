@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <meta name="author" content="Jutta Hänninen">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>Payment file generator</title>
+</head>
+<body style="padding: 2%">
+    <h2>Payment file generator</h2>
+    <p>With this tool you can create incoming reference payment files as per
+            <a href="https://www.finanssiala.fi/en/topics/digital-services-and-payments/payment-services-in-finland/payment-technical-documents/">
+            FFI's specs</a>. You can create one payment file for one account at a time. Payment date will be current date.</p>
+    <p>Format the input as follows:
+        <ul>
+            <li>Account number: exactly 14 digits; remove the leading FIxx from the beginning of IBAN</li>
+            <li>Reference number: max 20 digits</li>
+            <li>Payment amount: comma as decimal separator, two decimals</li>
+        </ul>
+    </p>
+    <form action="" method="post">
+        <table id="paymentsdata">
+            <tr>
+                <td><label for="account">Account number</label></td>
+            </tr>
+            <tr>
+                <td><input type="text" id="account" name="account" required></td>
+            </tr>
+            <tr>
+                <td><label for="reference">Payment reference number</label></td>
+                <td><label for="amount">Payment amount</label></td>
+            </tr>
+            <tr id="paymentrow">
+                <td><input type="text" id="reference" name="reference" size="30"></td>
+                <td><input type="text" id="amount" name="amount"></td>
+                <td><input type="button" value="Delete row" onclick="deleteRow(this)"></td>
+            </tr>
+        </table> 
+        <input type="button" name="rowadd" value="Add row" onclick="addRow()">
+        <input type="reset" value="Clear fields">
+        <input type="submit" name="submit" value="Generate file">
+    </form>
+    <p>
+    
+    </p>
+    <script>
+        function deleteRow(row) {
+            var i = row.parentNode.parentNode.rowIndex;
+            document.getElementById('paymentsdata').deleteRow(i);
+        }
+        function addRow() {
+            var table = document.getElementById('paymentsdata');
+            var row = table.insertRow(-1);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var i = row.rowIndex;
+            cell1.innerHTML = '<input type="text" id="reference' +i+ '" name="reference" size="30">';
+            cell2.innerHTML = '<input type="text" id="amount' +i+ '" name="amount">';
+            cell3.innerHTML = '<input type="button" value="Delete row" onclick="deleteRow(this)">';
+        }
+        </script>
+</body>
+</html>
