@@ -4,7 +4,7 @@ Tool to easily create incoming reference payment files.
 
 ### Background
 
-Working in application management for ledger and invoicing services one very often need to create incoming reference payment files for application testing purposes. The idea of this tool is to reduce manual work when creating those files, and make the creation of files easier and quicker.
+Working in application management for ledger and invoicing services one very often needs to create incoming reference payment files for application testing purposes. The idea of this tool is to reduce manual work when creating those files, and make the creation of files easier and quicker.
 
 ### Specs
 
