@@ -72,7 +72,7 @@ batch = create_batch_record()
 transactions = create_transaction_records()
 summary = create_summary_record(transactions)
 
-filename = 'payments_' + datetime.now().strftime('%Y%m%d%H%M%S')[2:] + '.txt'
+filename = 'paymentfiles/payments_' + datetime.now().strftime('%Y%m%d%H%M%S')[2:] + '.txt'
 with open(filename, 'x') as f:
     print(batch, file=f)
     for t in transactions:
