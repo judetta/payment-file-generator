@@ -17,4 +17,6 @@ On the pages of [Finance Finland (FFI)](https://www.finanssiala.fi/en/topics/dig
 
 You'll need the receiving account number and the reference number(s) and amount(s) for payment(s) you want to include in the file.
 
-More information will follow once the tool actually works :)
+Currently the Python script works; run the script, enter as many payment references and amounts you want, and when you do not want to add more, just hit enter. The file will be created into a folder _paymentfiles_ under whereever you are running the script.
+
+Web UI with html and javascript will (maybe) follow later.
